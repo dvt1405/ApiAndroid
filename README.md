@@ -68,7 +68,7 @@ class WelcomeActivity : BaseActivity() {
 ```
   ##### Java
 ```java
-public class WelcomeActivity extend BaseActivity {
+public class WelcomeActivity extends BaseActivity {
 ...
 }
 ```
