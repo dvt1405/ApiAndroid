@@ -45,10 +45,11 @@ Retrofit.Builder()
 ```java
 CustomInterceptor interceptor = new CustomInterceptor();
 customInterceptor.setLevel(CustomInterceptor.Level.BODY);
-OkHttpClient client = OkHttpClient.Builder()
+OkHttpClient client = new OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .build();
-Retrofit.Builder()
+// create retrofit interface
+API retrofit = new Retrofit.Builder()
             .baseUrl(Constants.DEVICE_BASE_URL[env])
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
