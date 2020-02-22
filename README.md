@@ -24,6 +24,7 @@ dependencies {
   ## Demo when use retrofit
   ### Step 1
   Add interceptor to your OkHttpClient
+  #### Kotlin
 ```kotlin
 val interceptor = CustomInterceptor()
 interceptor.level = CustomInterceptor.Level.BODY
@@ -39,6 +40,22 @@ Retrofit.Builder()
             .create(API::class.java)
             
 ```
+```java
+CustomInterceptor interceptor = new CustomInterceptor()
+customInterceptor.setLevel(CustomInterceptor.Level.BODY);
+OkHttpClient client = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+Retrofit.Builder()
+            .baseUrl(Constants.DEVICE_BASE_URL[env])
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+            .create(API::class.java)
+            
+```
+
 ### Step 2: Extend BaseActivity
 ```kotlin
 class WelcomeActivity : BaseActivity() {
