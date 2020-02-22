@@ -46,4 +46,8 @@ class WelcomeActivity : BaseActivity() {
 }
 ```
 ### Step 3: Install your app to device and shake your app to show dialog api history:
+![Untitled-1](https://user-images.githubusercontent.com/38560833/75093206-56fa3800-55b2-11ea-832d-7369bf2ada1c.png)
+![Untitled-2](https://user-images.githubusercontent.com/38560833/75093209-582b6500-55b2-11ea-8c01-31c198462aac.png)
+![Untitled-3](https://user-images.githubusercontent.com/38560833/75093210-58c3fb80-55b2-11ea-9c2f-b2e0a0b54381.png)
+![Untitled-4](https://user-images.githubusercontent.com/38560833/75093212-595c9200-55b2-11ea-89ec-acfa9686be9b.png)
 
