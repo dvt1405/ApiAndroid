@@ -5,22 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tun.kt.apilib.R
-import tun.kt.apilib.databinding.DialogApiDetailFragmentBinding
 
 class FragmentDialog(private val api: ApiDetails, private val type: Enum<Type>) : Fragment() {
-    companion object{
+    companion object {
         const val URL = "Url"
         const val METHOD = "Method"
         const val TIME = "Connect time"
         const val NULL = "Null"
 
     }
-    private var dataBinding: DialogApiDetailFragmentBinding? = null
+
+    private var textHeader: TextView? = null
+    private var textBody: TextView? = null
+    private var recyclerView: RecyclerView? = null
+    private var txtBody: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,21 +32,20 @@ class FragmentDialog(private val api: ApiDetails, private val type: Enum<Type>) 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dataBinding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.dialog_api_detail_fragment,
-            null,
-            false
-        )
-        initLayout()
-        return dataBinding!!.root
+        val view = inflater.inflate(R.layout.dialog_api_detail_fragment, null, false)
+        initLayout(view)
+        return view
     }
 
-    fun initLayout() {
+    fun initLayout(view: View) {
+        textHeader = view.findViewById(R.id.textHeader)
+        textBody = view.findViewById(R.id.textBody)
+        recyclerView = view.findViewById(R.id.recyclerView)
+        txtBody = view.findViewById(R.id.txtBody)
         when (type) {
             Type.INFO -> {
-                dataBinding?.textHeader?.visibility = View.GONE
-                dataBinding?.textBody?.visibility = View.GONE
+                textHeader?.visibility = View.GONE
+                textBody?.visibility = View.GONE
                 val map = mutableMapOf<String, String>()
                 map[URL] = api.request.url.toString()
                 map[METHOD] = api.request.method
@@ -52,29 +53,29 @@ class FragmentDialog(private val api: ApiDetails, private val type: Enum<Type>) 
                 map.putAll(api.headerRequest)
                 map.putAll(api.headerResponse)
                 val adapter = Adapter(map)
-                dataBinding?.recyclerView?.layoutManager = LinearLayoutManager(activity!!)
-                dataBinding?.recyclerView?.adapter = adapter
+                recyclerView?.layoutManager = LinearLayoutManager(activity!!)
+                recyclerView?.adapter = adapter
             }
             Type.REQUEST -> {
-                dataBinding?.textHeader?.visibility = View.VISIBLE
-                dataBinding?.textBody?.visibility = View.VISIBLE
+                textHeader?.visibility = View.VISIBLE
+                textBody?.visibility = View.VISIBLE
                 val adapter = Adapter(api.headerRequest)
-                dataBinding?.recyclerView?.layoutManager = LinearLayoutManager(activity!!)
-                dataBinding?.recyclerView?.adapter = adapter
-                dataBinding?.txtBody?.text = NULL
+                recyclerView?.layoutManager = LinearLayoutManager(activity!!)
+                recyclerView?.adapter = adapter
+                txtBody?.text = NULL
                 api.bodyRequest?.let {
-                    dataBinding?.txtBody?.text = it
+                    txtBody?.text = it
                 }
             }
             Type.RESPONSE -> {
-                dataBinding?.textHeader?.visibility = View.VISIBLE
-                dataBinding?.textBody?.visibility = View.VISIBLE
+                textHeader?.visibility = View.VISIBLE
+                textBody?.visibility = View.VISIBLE
                 val adapter = Adapter(api.headerResponse)
-                dataBinding?.recyclerView?.layoutManager = LinearLayoutManager(activity!!)
-                dataBinding?.recyclerView?.adapter = adapter
-                dataBinding?.txtBody?.text = NULL
+                recyclerView?.layoutManager = LinearLayoutManager(activity!!)
+                recyclerView?.adapter = adapter
+                txtBody?.text = NULL
                 api.bodyResponse?.let {
-                    dataBinding?.txtBody?.text = it
+                    txtBody?.text = it
                 }
             }
         }
@@ -102,6 +103,7 @@ class Adapter(private val headers: Map<String, String>) :
         private val keyHeader: TextView
         private val valueHeader: TextView
         private val txtDot: TextView
+
         init {
             keyHeader = view.findViewById(R.id.keyHeaders)
             valueHeader = view.findViewById(R.id.valueHeaders)
@@ -111,7 +113,7 @@ class Adapter(private val headers: Map<String, String>) :
         fun onBind(headers: Pair<String, String>) {
             keyHeader.text = headers.first
             valueHeader.text = headers.second
-            if(headers.second.isEmpty()) {
+            if (headers.second.isEmpty()) {
                 valueHeader.visibility = View.GONE
                 txtDot.visibility = View.GONE
             }

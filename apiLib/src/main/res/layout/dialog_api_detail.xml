@@ -1,70 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/button"
+    android:orientation="vertical">
 
-    <data>
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <View
+        android:id="@+id/headerBackground"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/button"
-        android:orientation="vertical"
-        android:id="@+id/container"
-        >
+        android:layout_height="50dp"
+        android:background="@drawable/background_top_15"
+        android:backgroundTint="@color/textColorDialogBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/headerBackground"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/background_top_15"
-            android:backgroundTint="@color/textColorDialogBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/txtClose"
+        android:layout_width="60dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:gravity="center_vertical"
+        android:text="@string/txtClose"
+        android:textColor="#fff"
+        android:textSize="@dimen/text_17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtClose"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="15dp"
-            android:text="@string/txtClose"
-            android:textColor="#fff"
-            android:textSize="@dimen/text_17sp"
-            android:gravity="center_vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:elevation="2dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground"
+        app:tabGravity="fill"
+        app:tabIndicatorGravity="bottom"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/CustomTablayout" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headerBackground"
-            app:tabGravity="fill"
-            app:tabIndicatorGravity="bottom"
-            app:tabMaxWidth="0dp"
-            android:elevation="2dp"
-            app:tabMode="fixed"
-            app:tabTextAppearance="@style/CustomTablayout"
-            />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:elevation="2dp"
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-            android:paddingEnd="8dp"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

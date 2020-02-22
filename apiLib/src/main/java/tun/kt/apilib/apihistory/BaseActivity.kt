@@ -85,7 +85,6 @@ abstract class BaseActivity : AppCompatActivity(), SensorEventListener {
         if (now - mLastForce > SHAKE_TIMEOUT) {
             mShakeCount = 0
         }
-        Log.e("mShake", mShakeCount.toString())
         if (now - mLastTime > TIME_THRESHOLD) {
             val diff: Long = now - mLastTime
             val speed: Float = Math.abs(

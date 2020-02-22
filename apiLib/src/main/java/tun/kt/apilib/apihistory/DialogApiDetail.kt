@@ -8,16 +8,15 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import tun.kt.apilib.R
 import tun.kt.apilib.apihistory.Constants
-import tun.kt.apilib.databinding.DialogApiDetailBinding
-import java.lang.StringBuilder
 
 class DialogApiDetail private constructor(
     val context: FragmentActivity,
@@ -26,7 +25,10 @@ class DialogApiDetail private constructor(
 ) {
     private var apiDetail: ApiDetails = apiDetails
     private val alertDialog: AlertDialog
-    private val dataBinding: DialogApiDetailBinding
+    private val view: View
+    private val viewPager: ViewPager2
+    private val tabLayout: TabLayout
+    private val txtClose: TextView
     var apiDetails: ApiDetails
         get() = apiDetail
         set(value) {
@@ -35,24 +37,20 @@ class DialogApiDetail private constructor(
 
     init {
         this.apiDetail = apiDetails
-        dataBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(context),
-            R.layout.dialog_api_detail,
-            parent,
-            false
-
-        )
-
+        view = LayoutInflater.from(context).inflate(R.layout.dialog_api_detail, parent, false)
+        viewPager = view.findViewById(R.id.viewPager)
+        tabLayout = view.findViewById(R.id.tabLayout)
+        txtClose = view.findViewById(R.id.txtClose)
         alertDialog = AlertDialog.Builder(context, R.style.DialogAnimationSlideCenter)
-            .setView(dataBinding.root)
+            .setView(view)
             .setCancelable(false)
             .create()
         val listFragment = arrayListOf<Fragment>()
         listFragment.add(FragmentDialog(apiDetails, FragmentDialog.Type.INFO))
         listFragment.add(FragmentDialog(apiDetails, FragmentDialog.Type.REQUEST))
         listFragment.add(FragmentDialog(apiDetails, FragmentDialog.Type.RESPONSE))
-        dataBinding.viewPager.adapter = PagerDetailApiAdapter(context, listFragment)
-        TabLayoutMediator(dataBinding.tabLayout, dataBinding.viewPager) { tab, position ->
+        viewPager.adapter = PagerDetailApiAdapter(context, listFragment)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
                 0 -> {
                     tab.text = INFO
@@ -65,7 +63,7 @@ class DialogApiDetail private constructor(
                 }
             }
         }.attach()
-        dataBinding.txtClose.setOnClickListener {
+        txtClose.setOnClickListener {
             dismiss()
         }
     }
@@ -106,7 +104,7 @@ class DialogApiDetail private constructor(
         }
         alertDialog.show()
         ObjectAnimator.ofFloat(
-            dataBinding.root,
+            view,
             View.TRANSLATION_X,
             parent.width.toFloat(),
             0f
@@ -125,7 +123,7 @@ class DialogApiDetail private constructor(
 
     fun dismiss() {
         ObjectAnimator.ofFloat(
-            dataBinding.root,
+            view,
             View.TRANSLATION_X,
             0f,
             parent.width.toFloat()
