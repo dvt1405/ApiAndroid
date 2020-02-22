@@ -43,18 +43,18 @@ Retrofit.Builder()
   ##### Java
 
 ```java
-CustomInterceptor interceptor = new CustomInterceptor()
+CustomInterceptor interceptor = new CustomInterceptor();
 customInterceptor.setLevel(CustomInterceptor.Level.BODY);
 OkHttpClient client = OkHttpClient.Builder()
             .addInterceptor(interceptor)
-            .build()
+            .build();
 Retrofit.Builder()
             .baseUrl(Constants.DEVICE_BASE_URL[env])
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-            .create(API::class.java)
+            .create(API::class.java);
             
 ```
 
