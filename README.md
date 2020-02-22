@@ -24,7 +24,7 @@ dependencies {
   ## Demo when use retrofit
   ### Step 1
   Add interceptor to your OkHttpClient
-  #### Kotlin
+  ##### Kotlin
 ```kotlin
 val interceptor = CustomInterceptor()
 interceptor.level = CustomInterceptor.Level.BODY
@@ -40,6 +40,8 @@ Retrofit.Builder()
             .create(API::class.java)
             
 ```
+  ##### Java
+
 ```java
 CustomInterceptor interceptor = new CustomInterceptor()
 customInterceptor.setLevel(CustomInterceptor.Level.BODY);
@@ -57,8 +59,16 @@ Retrofit.Builder()
 ```
 
 ### Step 2: Extend BaseActivity
+  ##### Kotlin
+
 ```kotlin
 class WelcomeActivity : BaseActivity() {
+...
+}
+```
+  ##### Java
+```java
+public class WelcomeActivity extend BaseActivity {
 ...
 }
 ```
