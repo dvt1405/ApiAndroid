@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ApiLibrary</string>
+    <string name="txtClose">Close</string>
+    <string name="btnClose">Close</string>
+    <string name="textBodyDialogApiDetail">--Body--</string>
+    <string name="textHeadersDialogApiDetail">--Headers--</string>
+    <string name="txtDot">:</string>
+</resources>
