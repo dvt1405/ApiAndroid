@@ -2,7 +2,7 @@
 This library help you check your api history which you use in your app
 # Download
 Download [the lastest version](https://bintray.com/beta/#/dvt1405/com.kt.checkApi/CheckAPIAndroid?tab=overview) via maven and gradle
-##### Newest vertion = 1.1.2
+##### Newest vertion = 1.1.4
 In your build.gradle project
 ```bash
 allprojects {
@@ -16,8 +16,9 @@ allprojects {
 ```
 In your build.gradle app module
 ```bash
+def newestVerion = '1.1.4'
 dependencies {
-    implementation 'com.kt:api:1.1.2'
+    implementation 'com.kt:api:$newestVerion'
 }
 ```
 # Usage
