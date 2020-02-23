@@ -15,7 +15,7 @@ allprojects {
 }
 ```
 In your build.gradle app module
-```bash
+```gradle
 def newestVerion = '1.1.4'
 dependencies {
     implementation 'com.kt:api:$newestVerion'
