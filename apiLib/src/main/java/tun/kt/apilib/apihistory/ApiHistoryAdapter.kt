@@ -1,4 +1,4 @@
-package com.kt.express.presentation.ui.apihistory
+package tun.kt.apilib.apihistory
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -6,11 +6,9 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import tun.kt.apilib.R
-import tun.kt.apilib.apihistory.Constants
 
 class ApiHistoryAdapter(
     private val context: Context,

@@ -7,11 +7,8 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.kt.express.presentation.ui.apihistory.DialogApiHistory
 
 
 abstract class BaseActivity : AppCompatActivity(), SensorEventListener {

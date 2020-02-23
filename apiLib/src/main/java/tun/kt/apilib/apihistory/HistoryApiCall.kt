@@ -1,10 +1,6 @@
-package com.kt.express.presentation.ui.apihistory
+package tun.kt.apilib.apihistory
 
 import androidx.lifecycle.MutableLiveData
-import okhttp3.Request
-import okhttp3.Response
-import java.lang.StringBuilder
-import java.util.*
 import kotlin.collections.ArrayList
 
 class HistoryApiCall private constructor() {

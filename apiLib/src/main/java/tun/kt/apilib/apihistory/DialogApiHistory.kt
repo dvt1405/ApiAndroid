@@ -1,13 +1,10 @@
-package com.kt.express.presentation.ui.apihistory
+package tun.kt.apilib.apihistory
 
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
@@ -16,7 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tun.kt.apilib.R
-import tun.kt.apilib.apihistory.Constants
 
 class DialogApiHistory private constructor(private val context: Activity) {
     var alertDialog: AlertDialog? = null
@@ -55,6 +51,7 @@ class DialogApiHistory private constructor(private val context: Activity) {
             .create()
         alertDialog?.window?.let {
             Constants.setWindowDialogHideNavigationBar(it)
+            it.attributes.windowAnimations = R.style.DialogTheme
         }
         txtClose?.setOnClickListener {
             alertDialog?.dismiss()

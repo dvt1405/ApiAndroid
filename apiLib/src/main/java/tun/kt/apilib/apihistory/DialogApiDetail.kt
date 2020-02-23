@@ -1,4 +1,4 @@
-package com.kt.express.presentation.ui.apihistory
+package tun.kt.apilib.apihistory
 
 import android.animation.ObjectAnimator
 import android.graphics.Color
@@ -16,7 +16,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import tun.kt.apilib.R
-import tun.kt.apilib.apihistory.Constants
 
 class DialogApiDetail private constructor(
     val context: FragmentActivity,
