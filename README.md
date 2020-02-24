@@ -45,7 +45,7 @@ Retrofit.Builder()
 
 ```java
 CustomInterceptor interceptor = new CustomInterceptor();
-customInterceptor.setLevel(CustomInterceptor.Level.BODY);
+interceptor.setLevel(CustomInterceptor.Level.BODY);
 OkHttpClient client = new OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .build();
