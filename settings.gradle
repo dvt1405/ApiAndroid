@@ -1,2 +1,4 @@
 include ':app', ':apiLib'
 rootProject.name='ApiLibrary'
+include ':feedbackview'
+include ':paintview'

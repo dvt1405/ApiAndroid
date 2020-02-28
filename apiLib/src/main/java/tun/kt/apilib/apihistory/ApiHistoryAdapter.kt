@@ -13,7 +13,7 @@ import tun.kt.apilib.R
 class ApiHistoryAdapter(
     private val context: Context,
     private var listApiCall: HistoryApiCall,
-    val callback: OnItemClickListener
+    private val callback: OnItemClickListener
 ) :
     RecyclerView.Adapter<ApiHistoryAdapter.ApiHistoryViewHolder>() {
 

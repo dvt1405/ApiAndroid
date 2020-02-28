@@ -50,7 +50,6 @@ class DialogApiHistory private constructor(private val context: Activity) {
             .setView(view)
             .create()
         alertDialog?.window?.let {
-            Constants.setWindowDialogHideNavigationBar(it)
             it.attributes.windowAnimations = R.style.DialogTheme
         }
         txtClose?.setOnClickListener {
@@ -68,14 +67,13 @@ class DialogApiHistory private constructor(private val context: Activity) {
         isShowing = false
         adapter!!.apiHistory = apiHistoryApiCall!!
         alertDialog?.window?.let {
-            Constants.setWindowDialogHideNavigationBar(it)
             it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
         if (!context.isFinishing) {
             alertDialog?.show()
         }
         alertDialog?.window?.let {
-            if (context.resources.displayMetrics.widthPixels / context.resources.displayMetrics.ydpi < 600) {
+            if (context.resources.displayMetrics.xdpi < 600) {
                 it.setLayout(
                     context.resources.displayMetrics.widthPixels,
                     context.resources.displayMetrics.heightPixels

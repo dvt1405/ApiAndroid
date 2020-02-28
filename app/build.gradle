@@ -25,6 +25,13 @@ android {
     dataBinding {
         enabled = true
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -39,6 +46,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(':apiLib')
+    implementation project(':feedbackview')
+//    implementation project(':paintview')
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.2.0-alpha03'
@@ -47,5 +56,12 @@ dependencies {
     androidTestImplementation "androidx.arch.core:core-testing:$androidxArchVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$archLifecycleVersion"
-
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.2.1'
+    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
+    implementation 'com.hedgehog.ratingbar:app:1.1.2'
+//    implementation 'com.kt:paint-view:1.0.0-beta'
+    implementation 'com.kt:api:1.1.5'
 }

@@ -5,4 +5,5 @@
     <string name="textBodyDialogApiDetail">--Body--</string>
     <string name="textHeadersDialogApiDetail">--Headers--</string>
     <string name="txtDot">:</string>
+    <string name="btnCopy">Copy</string>
 </resources>

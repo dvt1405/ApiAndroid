@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
@@ -15,11 +16,6 @@ abstract class BaseActivity : AppCompatActivity(), SensorEventListener {
     private var sensorService: SensorManager? = null
     private var sensor: Sensor? = null
     private var dialogApiHistory: DialogApiHistory? = null
-    private val FORCE_THRESHOLD = 1050
-    private val TIME_THRESHOLD = 100
-    private val SHAKE_TIMEOUT = 500
-    private val SHAKE_DURATION = 1000
-    private val SHAKE_COUNT = 3
     private var mLastTime = System.currentTimeMillis()
     private var mLastForce = 0L
     private var mLastX = -1.0f
@@ -28,13 +24,16 @@ abstract class BaseActivity : AppCompatActivity(), SensorEventListener {
     private var mShakeCount = 0
     private var mLastShake = 0L
 
+    companion object {
+        private const val FORCE_THRESHOLD = 1050
+        private const val TIME_THRESHOLD = 100
+        private const val SHAKE_TIMEOUT = 500
+        private const val SHAKE_DURATION = 1000
+        private const val SHAKE_COUNT = 3
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
         dialogApiHistory = DialogApiHistory.getInstance(this)
         sensorService = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensor = sensorService?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -53,22 +52,22 @@ abstract class BaseActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
-                or View.SYSTEM_UI_FLAG_IMMERSIVE)
-        window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
-            if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {
-                window.decorView.systemUiVisibility = (
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-            }
-        }
-        return super.onCreateView(name, context, attrs)
-    }
+//    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+//        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+//                or View.SYSTEM_UI_FLAG_IMMERSIVE)
+//        window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
+//            if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {
+//                window.decorView.systemUiVisibility = (
+//                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+//            }
+//        }
+//        return super.onCreateView(name, context, attrs)
+//    }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -16,6 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
     }
 
     buildTypes {
@@ -29,7 +31,25 @@ android {
 ext {
     PUBLISH_GROUP_ID = 'com.kt'
     PUBLISH_ARTIFACT_ID = 'api'
-    PUBLISH_VERSION = '1.1.2'
+    PUBLISH_VERSION = '1.1.5'
+
+    bintrayRepo = 'com.kt.checkApi' // your repo name
+    bintrayName = 'CheckAPIAndroid' // has to be same as your library module name
+    publishedGroupId = 'com.kt' // your module package name
+    libraryName = 'CheckAPIAndroid'
+    artifact = 'api' // has to be same as your library module name
+    libraryDescription = 'Check your api call by shake your device.'
+
+    siteUrl = 'https://github.com/dvt1405/ApiAndroid'
+    gitUrl = 'https://github.com/dvt1405/ApiAndroid.git'
+
+    libraryVersion = '1.1.5'
+    developerId = 'tuandv97'
+    developerName = 'KunTun'
+    developerEmail = 'dvt1405@gmail.com'
+    licenseName = 'The wxWindows Library Licence (WXwindows)'
+    licenseUrl = 'https://opensource.org/licenses/wxwindows.php'
+    allLicenses = ["wxWindows"]
 }
 dependencies {
     def archLifecycleVersion = '2.2.0-rc03'
@@ -50,5 +70,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$archLifecycleVersion"
 }
-
+tasks.withType(Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    destinationDir = file("../javadoc/")
+    failOnError false
+}
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
