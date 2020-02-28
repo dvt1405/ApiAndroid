@@ -6,6 +6,7 @@ import android.view.WindowManager
 import java.util.*
 
 object Constants {
+    var isPhone: Boolean? = false
     fun parseTime(date: Date, isAmPmEnd: Boolean): String {
         val dateTime = Calendar.getInstance()
         dateTime.time = date

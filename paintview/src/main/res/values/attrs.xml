@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PaintView">
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="brushColor" format="color" />
+        <attr name="emboss" format="boolean" />
+        <attr name="backgroundBoardColor" format="color" />
+        <attr name="blur" format="boolean" />
+        <attr name="paintStyle" format="enum">
+            <enum name="FILL" value="0" />
+            <enum name="STROKE" value="1" />
+            <enum name="FILL_AND_STROKE" value="2" />
+        </attr>
+        <attr name="paintStrokeJoint" format="enum">
+            <enum name="MITER" value="0" />
+            <enum name="ROUND" value="1" />
+            <enum name="BEVEL" value="2" />
+        </attr>
+        <attr name="strokeCap" format="enum">
+            <enum name="BUTT" value="0" />
+            <enum name="ROUND" value="1" />
+            <enum name="SQUARE" value="2" />
+        </attr>
+        <attr name="isAntiAlias" format="boolean" />
+        <attr name="isDither" format="boolean" />
+    </declare-styleable>
+
+    <color name="defaultBrushColor">#4D4B4C</color>
+</resources>

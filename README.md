@@ -1,4 +1,4 @@
-# ApiAndroid
+# PaintView
 This library help you check your api history which you use in your app
 # Download
 Download [the lastest version](https://bintray.com/beta/#/dvt1405/com.kt.checkApi/CheckAPIAndroid?tab=overview) via maven and gradle
@@ -63,13 +63,5 @@ public class WelcomeActivity extends BaseActivity {
 ...
 }
 ```
-### Step 3: Install your app to device and shake your app to show dialog api history:
-#### List api
-![Untitled-1](https://user-images.githubusercontent.com/38560833/75093206-56fa3800-55b2-11ea-832d-7369bf2ada1c.png)
-#### Info
-![Untitled-2](https://user-images.githubusercontent.com/38560833/75093209-582b6500-55b2-11ea-8c01-31c198462aac.png)
-#### Request
-![Untitled-3](https://user-images.githubusercontent.com/38560833/75093210-58c3fb80-55b2-11ea-9c2f-b2e0a0b54381.png)
-#### Response
-![Untitled-4](https://user-images.githubusercontent.com/38560833/75093212-595c9200-55b2-11ea-89ec-acfa9686be9b.png)
+
 

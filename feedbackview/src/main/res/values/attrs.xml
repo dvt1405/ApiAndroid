@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RatingBarFeedback">
+        <attr name="numStars" default="5" format="integer" />
+        <attr name="height" format="dimension" />
+        <attr name="sizeStars" format="integer" />
+        <attr name="width" format="integer" />
+        <attr name="typeRating" format="enum">
+            <enum name="stars" value="0" />
+            <enum name="faces" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

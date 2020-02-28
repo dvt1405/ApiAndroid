@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="DialogAnimationSlideCenter" parent="Theme.AppCompat.Dialog">
+    <style name="DialogAnimationSlideCenter" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
-        <!--        <item name="android:windowEnterAnimation">@anim/slide_left</item>-->
-        <!--        <item name="android:windowExitAnimation">@anim/slide_right</item>-->
-
+        <item name="android:windowEnterAnimation">@anim/slide_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_right</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
-
         <!--        <item name="windowActionBar">false</item>-->
         <!--        <item name="windowActionModeOverlay">false</item>-->
 
@@ -23,7 +20,10 @@
     <style name="DialogTheme" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">0dp</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowEnterAnimation">@anim/dialog_anim_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_anim_slide_down</item>
     </style>
     <style name="CustomTablayout" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textAllCaps">false</item>

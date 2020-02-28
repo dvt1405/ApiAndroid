@@ -1,5 +1,6 @@
 package tun.kt.apilib.apihistory
 
+import android.os.Build
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.internal.http.promisesBody
@@ -90,7 +91,7 @@ class ApiDetails(
         return mapHeaders
     }
 
-    fun getResponseBody(): String? {
+    private fun getResponseBody(): String? {
         val responseBody = response!!.body ?: return null
         val contentLength = responseBody.contentLength()
         if (response!!.promisesBody()) {

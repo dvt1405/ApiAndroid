@@ -42,8 +42,13 @@ class DialogApiDetail private constructor(
         txtClose = view.findViewById(R.id.txtClose)
         alertDialog = AlertDialog.Builder(context, R.style.DialogAnimationSlideCenter)
             .setView(view)
-            .setCancelable(false)
+            .setCancelable(true)
             .create()
+        alertDialog.window?.let {
+            if (context.resources.displayMetrics.densityDpi < 600) {
+                it.attributes?.windowAnimations = R.style.DialogAnimationSlideCenter
+            }
+        }
         val listFragment = arrayListOf<Fragment>()
         listFragment.add(FragmentDialog(apiDetails, FragmentDialog.Type.INFO))
         listFragment.add(FragmentDialog(apiDetails, FragmentDialog.Type.REQUEST))
@@ -67,10 +72,54 @@ class DialogApiDetail private constructor(
         }
     }
 
+    fun show() {
+        alertDialog.window?.let {
+            it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            Constants.setWindowDialogHideNavigationBar(it)
+        }
+        if (context.resources.displayMetrics.xdpi < 600) {
+            alertDialog.show()
+        } else {
+            alertDialog.show()
+            ObjectAnimator.ofFloat(
+                view,
+                View.TRANSLATION_X,
+                parent.width.toFloat(),
+                0f
+            ).apply {
+                duration = 500
+                start()
+            }
+        }
+        alertDialog.window?.let {
+            alertDialog.window?.setLayout(parent.width, parent.height)
+            Constants.clearFlagWindowDialogNotFocusable(it)
+        }
+    }
+
+    fun dismiss() {
+        if (context.resources.displayMetrics.xdpi < 600) {
+            alertDialog.dismiss()
+        } else {
+            ObjectAnimator.ofFloat(
+                view,
+                View.TRANSLATION_X,
+                0f,
+                parent.width.toFloat()
+            ).apply {
+                duration = 500
+                start()
+            }
+            Handler().postDelayed(Runnable {
+                alertDialog.dismiss()
+            }, 500)
+        }
+    }
+
     companion object {
-        private val INFO = "Info"
-        private val REQUEST = "Request"
-        private val RESPONSE = "Response"
+        private const val INFO = "Info"
+        private const val REQUEST = "Request"
+        private const val RESPONSE = "Response"
         private var INSTANCE: DialogApiDetail? = null
         fun getInstance(
             context: FragmentActivity,
@@ -95,45 +144,4 @@ class DialogApiDetail private constructor(
 
         fun getInstance(): DialogApiDetail? = INSTANCE
     }
-
-    fun show() {
-        alertDialog.window?.let {
-            it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            Constants.setWindowDialogHideNavigationBar(it)
-        }
-        alertDialog.show()
-        ObjectAnimator.ofFloat(
-            view,
-            View.TRANSLATION_X,
-            parent.width.toFloat(),
-            0f
-        ).apply {
-            duration = 500
-            start()
-        }
-        alertDialog.window?.let {
-            it.setLayout(
-                parent.width,
-                parent.height
-            )
-            Constants.clearFlagWindowDialogNotFocusable(it)
-        }
-    }
-
-    fun dismiss() {
-        ObjectAnimator.ofFloat(
-            view,
-            View.TRANSLATION_X,
-            0f,
-            parent.width.toFloat()
-        ).apply {
-            duration = 500
-            start()
-        }
-        Handler().postDelayed(Runnable {
-            alertDialog.dismiss()
-        }, 500)
-
-    }
-
 }
