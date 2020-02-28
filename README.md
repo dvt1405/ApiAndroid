@@ -35,25 +35,6 @@ dependencies {
 </androidx.constraintlayout.widget.ConstraintLayout>
             
 ```
-  ##### Java
-
-```java
-CustomInterceptor interceptor = new CustomInterceptor();
-interceptor.setLevel(CustomInterceptor.Level.BODY);
-OkHttpClient client = new OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build();
-// create retrofit interface
-API retrofit = new Retrofit.Builder()
-            .baseUrl(Constants.DEVICE_BASE_URL[env])
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-            .create(API::class.java);
-            
-```
-
 ### Step 2: Use in your activity
   ##### Kotlin
 
