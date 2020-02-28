@@ -26,6 +26,7 @@ dependencies {
         android:id="@+id/paintView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:strokeWidth="10dp"
         app:backgroundBoardColor="#fff"
         app:brushColor="#FF7D27"
         app:layout_constraintBottom_toBottomOf="parent"
