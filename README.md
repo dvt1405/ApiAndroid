@@ -1,33 +1,38 @@
 # PaintView
 PaintView: Help you to drawing 
 # Download
-Download [the lastest version](https://bintray.com/beta/#/dvt1405/com.kt.checkApi/CheckAPIAndroid?tab=overview) via maven and gradle
-##### Newest vertion = 1.1.5
+Download [the lastest version](https://bintray.com/beta/#/dvt1405/com.kt.checkApi/PaintView?tab=overview) via maven and gradle
+##### Newest vertion = 1.0.0-beta
 In your build.gradle app module
 ```gradle
 def newestVerion = '1.1.5'
 dependencies {
-    implementation 'com.kt:api:$newestVerion'
-}
+    implementation 'com.kt:paint-view:1.0.0-beta
 ```
 # Usage
   ## Demo when use retrofit
   ### Step 1
   Add interceptor to your OkHttpClient
-  ##### Kotlin
-```kotlin
-val interceptor = CustomInterceptor()
-interceptor.level = CustomInterceptor.Level.BODY
-val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-Retrofit.Builder()
-            .baseUrl(Constants.DEVICE_BASE_URL[env])
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-            .create(API::class.java)
+  ##### XML
+```XML
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:hedgehog="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <tun.kt.paintview.PaintView
+        android:id="@+id/paintView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:backgroundBoardColor="#fff"
+        app:brushColor="#FF7D27"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
             
 ```
   ##### Java
@@ -49,26 +54,36 @@ API retrofit = new Retrofit.Builder()
             
 ```
 
-### Step 2: Extend BaseActivity
+### Step 2: Use in your activity
   ##### Kotlin
 
 ```kotlin
-class WelcomeActivity : BaseActivity() {
-...
+class WelcomeActivity : AppCompatActivity() {
+    private var paintView: PaintView? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+            paintView = findViewById(R.id.paintView)
+            // set attributes programming
+            paintView?.brushSize = 10f
+            paintView?.brushColor = Color.GREEN
+            paintView?.backgroundBoardColor = Color.WHITE
+        }
 }
 ```
   ##### Java
 ```java
-public class WelcomeActivity extends BaseActivity {
+public class WelcomeActivity extends AppCompatActivity {
+    private PaintView paintView;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        // set attributes programming
+        paintView = findViewById(R.id.paintView);
+        paintView.setBrushSize(10f);
+        paintView.setBrushColor(Color.GREEN);
+        paintView.setBackgroundBoardColor(Color.WHITE);
+    }
+    
 ...
 }
 ```
-### Step 3: Install your app to device and shake your app to show dialog api history:
-#### List api
-![Untitled-1](https://user-images.githubusercontent.com/38560833/75093206-56fa3800-55b2-11ea-832d-7369bf2ada1c.png)
-#### Info
-![Untitled-2](https://user-images.githubusercontent.com/38560833/75093209-582b6500-55b2-11ea-8c01-31c198462aac.png)
-#### Request
-![Untitled-3](https://user-images.githubusercontent.com/38560833/75093210-58c3fb80-55b2-11ea-9c2f-b2e0a0b54381.png)
-#### Response
-![Untitled-4](https://user-images.githubusercontent.com/38560833/75093212-595c9200-55b2-11ea-89ec-acfa9686be9b.png)
