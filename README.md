@@ -2,22 +2,12 @@
 This library help you check your api history which you use in your app
 # Download
 Download [the lastest version](https://bintray.com/beta/#/dvt1405/com.kt.checkApi/CheckAPIAndroid?tab=overview) via maven and gradle
-##### Newest vertion = 1.1.2
-In your build.gradle project
-```bash
-allprojects {
-    repositories {
-        ...
-        maven{
-            url  "https://dl.bintray.com/dvt1405/com.kt.checkApi"
-        }
-    }
-}
-```
+##### Newest vertion = 1.1.5
 In your build.gradle app module
-```bash
+```gradle
+def newestVerion = '1.1.5'
 dependencies {
-    implementation 'com.kt:api:1.1.2'
+    implementation 'com.kt:api:$newestVerion'
 }
 ```
 # Usage
@@ -44,7 +34,7 @@ Retrofit.Builder()
 
 ```java
 CustomInterceptor interceptor = new CustomInterceptor();
-customInterceptor.setLevel(CustomInterceptor.Level.BODY);
+interceptor.setLevel(CustomInterceptor.Level.BODY);
 OkHttpClient client = new OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .build();
