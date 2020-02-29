@@ -39,7 +39,7 @@ isDither|boolean|false|
 # Methods
 | Name          | Return        |   Usage    | Params | Description 
 | ------------- |:-------------:| :------------:| :------------: |:------------: |
-|clear| Void| clear your view|none
+|clear| Void| clear your view   |none
 |undo | Void | undo|none
 |redo | Void | redo|none
 |getPicture(type: Type, otherBackgroundColor: Int)|Any|capture your view | type: Type(BITMAP or BASE64 or BYTE_ARRAY)|Cast to each type befor use (bitmap or String or bytearray)
