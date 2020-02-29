@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="PaintView">
         <attr name="strokeWidth" format="dimension" />
+        <attr name="brushSize" format="dimension" />
         <attr name="brushColor" format="color" />
         <attr name="emboss" format="boolean" />
         <attr name="backgroundBoardColor" format="color" />
