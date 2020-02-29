@@ -2,17 +2,53 @@
 PaintView: Help you to drawing 
 # Download
 Download [the lastest version](https://bintray.com/beta/#/dvt1405/com.kt.checkApi/PaintView?tab=overview) via maven and gradle
-##### Newest vertion = 1.0.0-beta
+##### Newest vertion = 1.0.0
 In your build.gradle app module
 ```gradle
-def newestVerion = '1.1.5'
+def newestVerion = '1.1.0'
 dependencies {
-    implementation 'com.kt:paint-view:1.0.0-beta
+    implementation 'com.kt:paint-view:$newestVersion
 ```
+# Attributes
+| Name          | Format        |   Default    | Description |
+| ------------- |:-------------:| :------------:| :-----------|
+| strokeWidth | dimension | 2dp | brush size
+| brushSize | dimension | 2dp |brush size
+| brushColor | color | #4D4B4C | color of brush
+| backgroundBoardColor | color | Color.WHITE | set background paint view
+| emboss | boolean | false | set maskfilter: emboss
+| blur | boolean | false | set maskfilter: blur
+| paintStyle | enum | STROKE | set paint style: FILL or STROKE or FILL_AND_STROKE
+| paintStrokeJoint | enum | ROUND | paintStrokeJoint: MITER or ROUND or BEVEL
+| strokeCap | enum | ROUND| paintStrokeCap: BUTT or ROUND or SQUARE
+|isAntiAlias | boolean | false | 
+isDither|boolean|false|
+# Variables
+| Name          | Type        |   Description    |
+| ------------- |:-------------:| :------------:|
+|bitmapPaint | Paint |get/set bitmap to draw
+|drawPath | FingerPath|get/set paths draw
+|brushColor | Int (Color int) | get/set
+|brushSize|Float(dp)|get/set: brusdhSize = 2(dp)|
+|backgroundBoardColor|Int (Color int)|get/set
+|isEmptyBrush | boolean| get
+|picture|ByteArray|get: capture your view
+|pictureBitmap|Bitmap|get: capture your view
+|pictureBase64|String(Base64)|get: capture your view
+
+# Methods
+| Name          | Return        |   Usage    | Params | Description 
+| ------------- |:-------------:| :------------:| :------------: |:------------: |
+|clear| Void| clear your view|none
+|undo | Void | undo|none
+|redo | Void | redo|none
+|getPicture(type: Type, otherBackgroundColor: Int)|Any|capture your view | type: Type(BITMAP or BASE64 or BYTE_ARRAY)|Cast to each type befor use (bitmap or String or bytearray)
+
+
 # Usage
-  ## Demo when use retrofit
+  ## Demo 
   ### Step 1
-  Add interceptor to your OkHttpClient
+  Add view to your layout xml file
   ##### XML
 ```XML
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
