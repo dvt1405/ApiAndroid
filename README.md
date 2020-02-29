@@ -105,3 +105,8 @@ public class WelcomeActivity extends AppCompatActivity {
 ...
 }
 ```
+# Demo
+![All](https://user-images.githubusercontent.com/38560833/75606612-23bf2800-5b21-11ea-8457-aa174252613a.PNG)
+|Capture view             |  Capture view with other background color
+|:-------------------------:|:-------------------------:
+|![cap view](https://user-images.githubusercontent.com/38560833/75606614-24f05500-5b21-11ea-881a-c4e60a79233c.PNG)  |  ![cap with other background color](https://user-images.githubusercontent.com/38560833/75606613-24f05500-5b21-11ea-9397-08fa17818ee0.PNG)
