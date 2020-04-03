@@ -7,7 +7,7 @@ In your build.gradle app module
 ```gradle
 def newestVerion = '1.1.0'
 dependencies {
-    implementation 'com.kt:paint-view:$newestVersion
+    implementation "com.kt:paint-view:$newestVerion"
 ```
 # Attributes
 | Name          | Format        |   Default    | Description |
