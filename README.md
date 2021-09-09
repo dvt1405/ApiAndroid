@@ -7,7 +7,7 @@ In your build.gradle app module
 ```gradle
 def newestVerion = '1.1.11'
 dependencies {
-    implementation "com.kt:api:$newestVerion"
+    implementation "com.kt.api:$newestVerion"
 }
 ```
 # Usage
